@@ -9,6 +9,8 @@ readme = "README.md"
 python = "^3.11"
 flake8 = "^6.0.0"
 mypy = "^1.2.0"
+webdriver-manager = "^3.8.6"
+selenium = "4.9.0"
 
 [tool.flake8]
 exclude = [".git", ".venv", "__pycache__"]
