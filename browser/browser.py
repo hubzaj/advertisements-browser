@@ -12,11 +12,13 @@ class Browser:
         self.driver.get(url)
         return self.get_network_traffic(requests_paths_to_wait)
 
-    def get_all_network_traffic(self) -> list[Request]:
-        return self.driver.requests
-
     def get_network_traffic(self, requests_paths_to_wait: list[str]) -> list[Request]:
-        pass
+        requests: list[Request] = []
+        for request_path_to_wait in requests_paths_to_wait:
+            if request := [request for request in self.driver.requests if request_path_to_wait in request.url]:
+                requests.append(request[0])
+            requests.append(self.driver.wait_for_request(request_path_to_wait, 5))
+        return requests
 
     def close_tab(self):
         self.driver.close()
