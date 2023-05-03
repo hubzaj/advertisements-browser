@@ -1,17 +1,16 @@
 from contextlib import contextmanager
 
-from selenium.webdriver.remote.webdriver import WebDriver
-
+from .browser import Browser
 from .browser_factory import create_browser
 from .browser_type import BrowserType
 
 
 @contextmanager
-def open_browser(browser: BrowserType) -> WebDriver:
-    driver = None
+def open_browser(browser_type_: BrowserType) -> Browser:
+    browser_ = None
     try:
-        driver = create_browser(browser)
-        yield driver
+        browser_ = create_browser(browser_type_)
+        yield browser_
     finally:
-        driver.close()
-        driver.quit()
+        browser_.close_tab()
+        browser_.close_browser()
