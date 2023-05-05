@@ -17,7 +17,8 @@ class Browser:
         for request_path_to_wait in requests_paths_to_wait:
             if request := [request for request in self.driver.requests if request_path_to_wait in request.url]:
                 requests.append(request[0])
-            requests.append(self.driver.wait_for_request(request_path_to_wait, 5))
+            else:
+                requests.append(self.driver.wait_for_request(request_path_to_wait, 5))
         return requests
 
     def close_tab(self):
