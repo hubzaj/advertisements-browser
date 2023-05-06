@@ -41,11 +41,20 @@ class Browser:
                 )
         return requests
 
-    def close_tab(self):
+    def close_tab(self) -> 'Browser':
         self.driver.close()
+        return self
 
-    def close_browser(self):
+    def close_browser(self) -> 'Browser':
         self.driver.quit()
+        return self
+
+    def close_newly_opened_tab(self) -> 'Browser':
+        window_handles = self.driver.window_handles
+        self.driver.switch_to.window(window_handles[1])
+        self.close_tab()
+        self.driver.switch_to.window(window_handles[0])
+        return self
 
     def __wait_for_element_to_be_clickable(self, locator: (By, str)) -> 'Browser':
         wait: WebDriverWait = WebDriverWait(self.driver, timeout=5)
