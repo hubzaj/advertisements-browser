@@ -50,10 +50,11 @@ class Browser:
         return self
 
     def close_newly_opened_tab(self) -> 'Browser':
-        window_handles = self.driver.window_handles
-        self.driver.switch_to.window(window_handles[1])
-        self.close_tab()
-        self.driver.switch_to.window(window_handles[0])
+        window_handles: list[str] = self.driver.window_handles
+        if len(window_handles) == 2:
+            self.driver.switch_to.window(window_handles[1])
+            self.close_tab()
+            self.driver.switch_to.window(window_handles[0])
         return self
 
     def __wait_for_element_to_be_clickable(self, locator: (By, str)) -> 'Browser':
