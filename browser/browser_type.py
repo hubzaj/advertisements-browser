@@ -9,4 +9,5 @@ class BrowserType(Enum):
         try:
             return cls[name.upper()]
         except KeyError:
-            raise KeyError(f"[{name}] browser isn't supported - choose one of {list(map(str, cls))}")
+            raise KeyError(f"[{name.upper()}] browser isn't supported "
+                           f"- choose one of {list(map(lambda l: str(l).split('.')[1], cls))}")
