@@ -1,3 +1,5 @@
+from contextlib import contextmanager
+
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
@@ -22,6 +24,13 @@ class Browser:
         element_to_be_clicked: WebElement = self.driver.find_element(by=locator[0], value=locator[1])
         element_to_be_clicked.click()
         return self
+
+    @contextmanager
+    def click_with_redirect_to_new_tab(self, locator: (By, str)) -> 'Browser':
+        try:
+            yield self.click(locator)
+        finally:
+            self.close_newly_opened_tab()
 
     def wait_for_requests(self, requests_paths_to_wait: list[str] = None) -> 'Browser':
         self.get_network_traffic(requests_paths_to_wait)
