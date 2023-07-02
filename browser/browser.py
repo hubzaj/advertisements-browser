@@ -32,10 +32,6 @@ class Browser:
         finally:
             self.close_newly_opened_tab()
 
-    def wait_for_requests(self, requests_paths_to_wait: list[str] = None) -> 'Browser':
-        self.get_network_traffic(requests_paths_to_wait)
-        return self
-
     def get_network_traffic(self, requests_paths_to_wait: list[str], timeout: int = 1) -> list[Request]:
         requests: list[Request] = []
         for request_path_to_wait in requests_paths_to_wait:
