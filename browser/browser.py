@@ -1,3 +1,4 @@
+import re
 from contextlib import contextmanager
 
 from selenium.common import TimeoutException, NoSuchElementException
@@ -36,7 +37,7 @@ class Browser:
         requests: list[Request] = []
         for request_path_to_wait in requests_paths_to_wait:
             try:
-                requests.append(self.driver.wait_for_request(pat=request_path_to_wait, timeout=timeout))
+                requests.append(self.driver.wait_for_request(pat=re.escape(request_path_to_wait), timeout=timeout))
             except TimeoutException:
                 requests.append(self.__get_unsuccessfully_processed_request(request_path_to_wait))
         return requests
