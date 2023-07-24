@@ -7,7 +7,7 @@ from .browser_type import BrowserType
 
 @contextmanager
 def open_browser(browser_type_: BrowserType) -> Browser:
-    browser_ = None
+    browser_: Browser | None = None
     try:
         browser_ = create_browser(browser_type_)
         yield browser_
