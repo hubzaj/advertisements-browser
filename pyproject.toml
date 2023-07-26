@@ -9,7 +9,7 @@ readme = "README.md"
 python = "^3.11"
 flake8 = "^6.0.0"
 mypy = "^1.2.0"
-webdriver-manager = "^3.8.6"
+webdriver-manager = "3.9.1"
 pytest = "^7.3.1"
 selenium-wire = "^5.1.0"
 
