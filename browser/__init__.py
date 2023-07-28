@@ -1,8 +1,8 @@
 from contextlib import contextmanager
 
-from .browser import Browser
-from .browser_factory import create_browser
-from .browser_type import BrowserType
+from browser.browser import Browser
+from browser.browser_factory import create_browser
+from browser.browser_type import BrowserType
 
 
 @contextmanager

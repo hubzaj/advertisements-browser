@@ -3,8 +3,8 @@ from seleniumwire import webdriver
 from seleniumwire.webdriver import Chrome
 from webdriver_manager.chrome import ChromeDriverManager
 
-from .browser import Browser
-from .browser_type import BrowserType
+from browser.browser import Browser
+from browser.browser_type import BrowserType
 
 
 def create_browser(browser_type: BrowserType = BrowserType.CHROME) -> Browser:
