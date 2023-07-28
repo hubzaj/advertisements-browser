@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from src.browser_type import BrowserType
+from browser.browser_type import BrowserType
 
 
 class BrowserTypeTest(TestCase):
