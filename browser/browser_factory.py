@@ -11,7 +11,7 @@ def create_browser(browser_type: BrowserType = BrowserType.CHROME) -> Browser:
         case BrowserType.CHROME:
             options: webdriver.ChromeOptions = webdriver.ChromeOptions()
             options.headless = True
-            # chrome_driver_path = ChromeDriverManager().install()
+            # options.binary_location = ChromeDriverManager().install()
             driver: Chrome = webdriver.Chrome(options=options)
             driver.maximize_window()
             return Browser(driver)
