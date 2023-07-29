@@ -3,6 +3,7 @@ from enum import Enum, auto
 
 class BrowserType(Enum):
     CHROME = auto()
+    CHROME_HEADLESS = auto()
 
     @classmethod
     def get_browser(cls, name: str) -> 'BrowserType':
