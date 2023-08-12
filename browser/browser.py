@@ -1,5 +1,6 @@
 import re
 from contextlib import contextmanager
+from logging import Logger, getLogger
 
 from selenium.common import TimeoutException, NoSuchElementException
 from selenium.webdriver.common.by import By
@@ -10,6 +11,8 @@ from selenium.webdriver.support.wait import WebDriverWait
 from seleniumwire.inspect import InspectRequestsMixin
 from seleniumwire.request import Request
 
+LOGGER: Logger = getLogger(__name__)
+
 
 class Browser:
 
@@ -17,10 +20,12 @@ class Browser:
         self.driver: WebDriver | InspectRequestsMixin = driver
 
     def open_page(self, url: str) -> 'Browser':
+        LOGGER.info(f'Open page [{url}]')
         self.driver.get(url)
         return self
 
     def click(self, locator: (By, str)) -> 'Browser':
+        LOGGER.info(f'Click element with locator [{locator}]')
         self.__wait_for_element_to_be_clickable(locator)
         element_to_be_clicked: WebElement = self.driver.find_element(by=locator[0], value=locator[1])
         element_to_be_clicked.click()
@@ -43,10 +48,12 @@ class Browser:
         return requests
 
     def close_tab(self) -> 'Browser':
+        LOGGER.info('Close tab')
         self.driver.close()
         return self
 
     def close_browser(self) -> 'Browser':
+        LOGGER.info('Close web browser')
         self.driver.quit()
         return self
 
