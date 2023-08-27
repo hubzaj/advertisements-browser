@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "browser-hz"
 version = "0.1.0"
-description = ""
+description = "Tailored Selenium Wire extension for in-house project development."
 authors = ["Hubert Zajac <hubertzajac6@gmail.com>"]
 readme = "README.md"
 packages = [{ include = "browser_hz" }]
