@@ -8,8 +8,8 @@ packages = [{ include = "browser_hz" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-flake8 = "^6.0.0"
-mypy = "^1.2.0"
+flake8 = "^6.1.0"
+mypy = "^1.5.1"
 webdriver-manager = "^4.0.0"
 pytest = "^7.3.1"
 selenium-wire = "^5.1.0"
