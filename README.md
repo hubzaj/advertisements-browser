@@ -7,7 +7,7 @@
 This project was initiated with the aim of comprehending the fundamental workings of Python packages, their
 distribution, and the process of releasing them using the project and dependency management tool, Poetry.
 The package was developed for internal utilization across various Python projects such
-as `browser-network-interception.`
+as [browser-network-interception](https://github.com/hubzaj/browser-network-interception).
 Its primary objective is to facilitate an in-depth understanding of package management while serving as a valuable asset
 for diverse Python projects.
 
