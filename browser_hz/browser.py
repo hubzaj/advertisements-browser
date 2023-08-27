@@ -53,7 +53,7 @@ class Browser:
         return self
 
     def close_browser(self) -> 'Browser':
-        LOGGER.info('Close web browser')
+        LOGGER.info('Close web browser_hz')
         self.driver.quit()
         return self
 

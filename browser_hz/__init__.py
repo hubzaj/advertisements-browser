@@ -1,9 +1,9 @@
 from contextlib import contextmanager
 from logging import Logger, getLogger
 
-from browser.browser import Browser
-from browser.browser_factory import create_browser
-from browser.browser_type import BrowserType
+from browser_hz.browser import Browser
+from browser_hz.browser_factory import create_browser
+from browser_hz.browser_type import BrowserType
 
 LOGGER: Logger = getLogger(__name__)
 
