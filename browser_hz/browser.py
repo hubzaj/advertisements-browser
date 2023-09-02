@@ -73,5 +73,4 @@ class Browser:
     def __get_unsuccessfully_processed_request(self, request_path_to_wait: str) -> Request:
         if request := [request for request in self.driver.requests if request_path_to_wait in request.url]:
             return request[0]
-        else:
-            raise NoSuchElementException(f'Request with path matching {request_path_to_wait} has not been sent')
+        raise NoSuchElementException(f'Request with path matching {request_path_to_wait} has not been sent')

@@ -24,6 +24,7 @@ max-line-length = 120
 max-attributes = 10
 disable = [
     "missing-docstring",
+    "logging-fstring-interpolation"
 ]
 good-names = "x, y"
 
