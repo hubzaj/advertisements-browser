@@ -35,7 +35,7 @@ jobs:
           poetry install
       - name: Lint with pylint and mypy
         run: |
-          poetry run pylint coding_challenges tests
+          poetry run pylint browser_hz tests
           poetry run mypy
       - name: Run unit tests
         run: |
