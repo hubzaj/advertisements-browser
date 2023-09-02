@@ -1,0 +1,42 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+
+name: Python application
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: gather runtime environment versions - asdf
+        uses: endorama/asdf-parse-tool-versions@v1
+        id: versions
+      - name: Set up Python
+        uses: actions/setup-python@v3
+        with:
+          python-version: "${{ env.PYTHON_VERSION }}"
+      - uses: Gr1N/setup-poetry@v8
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Install dependencies
+        run: |
+          poetry install
+      - name: Lint with pylint and mypy
+        run: |
+          poetry run pylint browser_hz tests
+          poetry run mypy
+      - name: Run unit tests
+        run: |
+          poetry run pytest tests
