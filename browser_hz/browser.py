@@ -1,9 +1,9 @@
 import re
 from contextlib import contextmanager
 from logging import Logger, getLogger
+from typing import Tuple, Generator
 
 from selenium.common import TimeoutException, NoSuchElementException
-from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support import expected_conditions
@@ -24,7 +24,7 @@ class Browser:
         self.driver.get(url)
         return self
 
-    def click(self, locator: (By, str)) -> 'Browser':
+    def click(self, locator: Tuple[str, str]) -> 'Browser':
         LOGGER.info(f'Click element with locator [{locator}]')
         self.__wait_for_element_to_be_clickable(locator)
         element_to_be_clicked: WebElement = self.driver.find_element(by=locator[0], value=locator[1])
@@ -32,7 +32,7 @@ class Browser:
         return self
 
     @contextmanager
-    def click_with_redirect_to_new_tab(self, locator: (By, str)) -> 'Browser':
+    def click_with_redirect_to_new_tab(self, locator: Tuple[str, str]) -> Generator['Browser', None, None]:
         try:
             yield self.click(locator)
         finally:
@@ -65,7 +65,7 @@ class Browser:
             self.driver.switch_to.window(window_handles[0])
         return self
 
-    def __wait_for_element_to_be_clickable(self, locator: (By, str)) -> 'Browser':
+    def __wait_for_element_to_be_clickable(self, locator: Tuple[str, str]) -> 'Browser':
         wait: WebDriverWait = WebDriverWait(self.driver, timeout=5)
         wait.until(expected_conditions.element_to_be_clickable(locator))
         return self
