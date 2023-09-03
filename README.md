@@ -1,5 +1,6 @@
 # Browser
 
+[![version](https://img.shields.io/pypi/v/browser-hz)](https://pypi.org/project/browser-hz/)
 [<img src="https://img.shields.io/badge/releases-PyPI-blue">](https://pypi.org/project/browser-hz/)
 
 ## Background
