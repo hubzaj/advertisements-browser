@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "${{ env.PYTHON_VERSION }}"
 
-      - name: Build and publish to pypi
+      - name: Build and publish to PyPI
         uses: JRubics/poetry-publish@v1.17
         with:
           pypi_token: ${{ secrets.PYPI_API_TOKEN }}
