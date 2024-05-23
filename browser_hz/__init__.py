@@ -10,11 +10,11 @@ LOGGER: Logger = getLogger(__name__)
 
 
 @contextmanager
-def open_browser(browser_type_: Browsers) -> Generator[Browser, None, None]:
+def open_browser(supported_browser: Browsers) -> Generator[Browser, None, None]:
     browser_: Browser | None = None
     try:
-        LOGGER.info(f'Open web browser [{browser_type_}]')
-        browser_ = create_browser(browser_type_)
+        LOGGER.info(f'Open web browser [{browser}]')
+        browser_ = create_browser(supported_browser)
         yield browser_
     finally:
         browser_.close_tab()
