@@ -27,3 +27,10 @@ class NetworkHelper:
         if request := [request for request in self._driver.requests if request_path_to_wait in request.url]:
             return request[0]
         raise NoSuchElementException(f'Request with path matching {request_path_to_wait} has not been sent')
+
+    @staticmethod
+    def get_request_with_path(requests: list[Request], path: str) -> Request | None:
+        for request in requests:
+            if re.search(re.escape(path), request.url):
+                return request
+        return None
