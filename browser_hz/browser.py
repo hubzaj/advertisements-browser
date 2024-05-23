@@ -31,7 +31,8 @@ class Browser:
     @contextmanager
     def click_with_redirect_to_new_tab(self, locator: Tuple[str, str]) -> Generator['Browser', None, None]:
         try:
-            yield self._element_helper.click(locator)
+            self._element_helper.click(locator)
+            yield self
         finally:
             self.close_newly_opened_tab()
 
