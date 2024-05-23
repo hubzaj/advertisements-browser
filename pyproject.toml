@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "browser-hz"
-version = "4.0.1"
+version = "4.1.0"
 description = "Tailored Selenium Wire extension for in-house project development."
 authors = ["Hubert Zajac <hubertzajac6@gmail.com>"]
 readme = "README.md"
@@ -10,7 +10,7 @@ packages = [{ include = "browser_hz" }]
 python = "^3.11"
 pylint = "^2.17.5"
 mypy = "^1.5.1"
-webdriver-manager = "^4.0.0"
+webdriver-manager = "^4.0.1"
 pytest = "^7.3.1"
 selenium-wire = "^5.1.0"
 
@@ -24,7 +24,8 @@ max-line-length = 120
 max-attributes = 10
 disable = [
     "missing-docstring",
-    "logging-fstring-interpolation"
+    "logging-fstring-interpolation",
+    "too-few-public-methods"
 ]
 good-names = "x, y"
 

@@ -4,13 +4,13 @@ from typing import Generator
 
 from browser_hz.browser import Browser
 from browser_hz.browser_factory import create_browser
-from browser_hz.browser_type import BrowserType
+from browser_hz.browsers import Browsers
 
 LOGGER: Logger = getLogger(__name__)
 
 
 @contextmanager
-def open_browser(browser_type_: BrowserType) -> Generator[Browser, None, None]:
+def open_browser(browser_type_: Browsers) -> Generator[Browser, None, None]:
     browser_: Browser | None = None
     try:
         LOGGER.info(f'Open web browser [{browser_type_}]')
